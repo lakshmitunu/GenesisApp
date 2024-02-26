@@ -28,8 +28,15 @@ class TaskDataModel: ObservableObject {
         guard let jsonData = json.data(using: .utf8) else {
             return
         }
+        let items: [ItemData] = [
+          ItemData(title: "Task 1", notes: "Task1 Notes", completed: false),
+          ItemData(title: "Task 2", notes: "Task1 Notes", completed: true),
+          ItemData(title: "Task 3", notes: "Task1 Notes", completed: false),
+          ItemData(title: "Task 4", notes: "Task1 Notes", completed: true),
+          ItemData(title: "Task 5", notes: "Task1 Notes", completed: false)
+        ]
         do {
-            let items: [ItemData] = try jsonDecoder.decode([ItemData].self, from: jsonData)
+            //let items: [ItemData] = try jsonDecoder.decode([ItemData].self, from: jsonData)
             self.items = items
         } catch {
             debugPrint("🧨", "updateItemsForMoreItems: \(error)")
